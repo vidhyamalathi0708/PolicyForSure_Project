@@ -19,6 +19,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.hexaware.policymanagement.filter.JwtAuthFilter;
 
+/* Author:Devanshu
+ * @CreatedOn:-17-11-2023
+ * Description: Security config for JWT 
+ */
 
 @Configuration
 @EnableWebSecurity
@@ -37,7 +41,7 @@ public class SecurityConfig
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.csrf(csrf -> csrf.disable())
+        return http.cors().and().csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests()
                 .antMatchers(
                 		"/api/v1/login/user",

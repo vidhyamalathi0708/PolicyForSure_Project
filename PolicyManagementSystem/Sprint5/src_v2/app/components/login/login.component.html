@@ -1,0 +1,36 @@
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card bg-light text-grey" >
+            <div class="card-body p-5 text-center">
+            <form #formData=ngForm  (ngSubmit)="readFormData(formData)">
+              <div class="mb-md-5 mt-md-4 pb-5">
+  
+                <h2 style ="color: #5000bb;" class="fw-normal mb-5 text-uppercase">Login</h2>
+                <p class="text-grey-50 mb-5">Please enter your Username and password!</p>
+  
+                <div class="form-outline form-grey mb-4">
+                  <input placeholder="Username" type="username" class="form-control form-control-lg" name="username"  required  #username="ngModel"  ngModel />
+                  <span style="color:red"  *ngIf="username.touched && username.invalid" > * Username is required</span>
+                </div>
+  
+                <div class="form-outline form-grey mb-4">
+                  <input placeholder="Password" type="password" class="form-control form-control-lg"  name="password"  required  #password="ngModel"   ngModel/>
+                  <span style="color:red"  *ngIf="password.touched && password.invalid" >* Password is required</span>
+                </div>  
+                <button style="background: #5000bb; color: rgb(255, 255, 255);" class="btn btn-outline-dark btn-lg px-8" type="submit" [disabled]="formData.invalid">Login</button>
+              </div>
+  
+              <div>
+                <p class="mb-0">Don't have an account? <a style="color: #5000bb;" routerLink="/register-user" class="text-grey-50 fw-bold">Register</a>
+                </p>
+              </div>
+              </form>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

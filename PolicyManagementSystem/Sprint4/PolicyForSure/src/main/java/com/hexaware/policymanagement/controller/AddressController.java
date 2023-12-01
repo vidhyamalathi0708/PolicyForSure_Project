@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,15 @@ import com.hexaware.policymanagement.dto.AddressDTO;
 import com.hexaware.policymanagement.entity.Address;
 import com.hexaware.policymanagement.services.IAddressServices;
 
+/* Author:Devanshu
+ * @CreatedOn:-15-11-2023
+ * Description: Address Controller Class
+ */
+/* Author:Devanshu/VidhyaMalathi
+ * @UpdatedOn:-17-11-2023
+ * Description: Assigned Authority
+ */
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/v1/addresses")
 public class AddressController 
@@ -26,7 +36,6 @@ public class AddressController
 	
 
 	@PostMapping(value = "/add",consumes = "application/json",produces = "application/json")
-	@PreAuthorize("hasAnyAuthority('Admin','User')")
 	public Address createAddress(@RequestBody AddressDTO addressDTO)
 	{
 		return service.createAddress(addressDTO);
