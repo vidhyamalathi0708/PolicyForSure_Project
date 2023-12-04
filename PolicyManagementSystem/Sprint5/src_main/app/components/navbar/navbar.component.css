@@ -1,13 +1,13 @@
 .gradient-custom 
 {
     height: 100px;
-    background: linear-gradient(to right, #5000bb, #8e00cc)
-}
+    background-image: url(../../../assets/navbg.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;}
 .navbarbrand
 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 25px;
 
 }
 

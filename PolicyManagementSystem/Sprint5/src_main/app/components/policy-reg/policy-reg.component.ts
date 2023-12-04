@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import {Policy} from 'src/app/model/Policy'
-import { JwtClientService } from 'src/app/jwt-client.service';
+import { PolicyServicesService } from 'src/app/services/policy-services.service';
 
 
 @Component({
@@ -18,13 +18,13 @@ export class PolicyRegComponent {
     policyName:'',
     policyType:'',
     company:'',
-    description:'',
+    policyDescription:'',
     termPeriod:'',
     amount:0,
     interest:0
 
   }
-  constructor(private jwtService:JwtClientService){}
+  constructor(private policyService:PolicyServicesService){}
 
 
   policyTypeControl = new FormControl('',Validators.required);
@@ -37,14 +37,15 @@ export class PolicyRegComponent {
     this.policy.policyType = this.policyTypeControl.value;
     this.policy.termPeriod = this.termPeriodControl.value;
     this.policy.company = formData.form.value.company;
-    this.policy.description = formData.form.value.description;
+    this.policy.policyDescription = formData.form.value.description;
     this.policy.amount = formData.form.value.amount;
     this.policy.interest = formData.form.value.interest;
     console.log(this.policy);
 
 
-    let response = this.jwtService.registerPolicy(this.policy);
-      response.subscribe( responseData => {this.response = responseData; console.log(responseData) });
+    let response = this.policyService.registerPolicy(this.policy);
+    console.log(response);
+    response.subscribe( responseData => {this.response = responseData; console.log(responseData) });
   }
 
 }

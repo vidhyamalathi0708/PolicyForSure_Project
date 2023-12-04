@@ -46,6 +46,9 @@ public class SecurityConfig
                 .antMatchers(
                 		"/api/v1/login/user",
                 		"/api/v1/users/add",
+                		"/api/v1/policies/getall",
+                		"/api/v1/policies/add",
+                		"/api/v1/policies/get/policy-type/{policyType}",
                         "/swagger-ui/**",
                         "/swagger-resources/**").permitAll()
                 .and()

@@ -61,14 +61,11 @@ public class UserPolicy implements Serializable
     @Future(message = "End date must be in the future")
     private LocalDate endDate;
 
-    @Pattern(regexp = "^(Monthly|Quarterly|Annually)$", message = "Invalid payment interval")
-    private String paymentInterval;
+    @Pattern(regexp = "^(Monthly|Quaterly|Half-Yearly|Annually)$")
+    private String termPeriod;
 
     @Positive(message = "Amount must be a positive number")
     private double amount;
-
-    @Positive(message = "Tenure must be a positive number")
-    private int tenure;
 
     @PositiveOrZero(message = "Maturity amount must be a positive or zero number")
     private double maturityAmount;
@@ -149,23 +146,17 @@ public class UserPolicy implements Serializable
 	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
-	public String getPaymentInterval() {
-		return paymentInterval;
+	public String getTermPeriod() {
+		return termPeriod;
 	}
-	public void setPaymentInterval(String paymentInterval) {
-		this.paymentInterval = paymentInterval;
+	public void setTermPeriod(String termPeriod) {
+		this.termPeriod = termPeriod;
 	}
 	public double getAmount() {
 		return amount;
 	}
 	public void setAmount(double amount) {
 		this.amount = amount;
-	}
-	public int getTenure() {
-		return tenure;
-	}
-	public void setTenure(int tenure) {
-		this.tenure = tenure;
 	}
 	public double getMaturityamount() {
 		return maturityAmount;
@@ -182,7 +173,7 @@ public class UserPolicy implements Serializable
 	}
 	public UserPolicy(long policyNo, LocalDate startDate, User user, Policy policy, PolicyPayment policyPayment,
 			 String policyName, String policyType, String company, LocalDate endDate,
-			String paymentInterval, double amount, int tenure, double maturityAmount,double interest) {
+			String termPeriod, double amount, double maturityAmount,double interest) {
 		super();
 		this.policyNo = policyNo;
 		this.startDate = startDate;
@@ -193,9 +184,8 @@ public class UserPolicy implements Serializable
 		this.policyType = policyType;
 		this.company = company;
 		this.endDate = endDate;
-		this.paymentInterval = paymentInterval;
+		this.termPeriod = termPeriod;
 		this.amount = amount;
-		this.tenure = tenure;
 		this.maturityAmount = maturityAmount;
 		this.interest = interest;
 	}
@@ -207,8 +197,8 @@ public class UserPolicy implements Serializable
 	@Override
 	public String toString() {
 		return "UserPolicy [policyNo=" + policyNo + ", startDate=" + startDate + ", policyName=" + policyName
-				+ ", policyType=" + policyType + ", company=" + company + ", endDate=" + endDate + ", paymentInterval="
-				+ paymentInterval + ", amount=" + amount + ", tenure=" + tenure + ", maturityAmount=" + maturityAmount
+				+ ", policyType=" + policyType + ", company=" + company + ", endDate=" + endDate + ", termPeriod="
+				+ termPeriod + ", amount=" + amount + ", maturityAmount=" + maturityAmount
 				+ ", interest=" + interest + ", user=" + user + ", policy=" + policy + "]";
 	}
 	

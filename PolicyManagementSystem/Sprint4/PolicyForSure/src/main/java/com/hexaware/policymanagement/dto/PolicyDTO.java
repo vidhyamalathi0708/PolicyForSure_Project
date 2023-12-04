@@ -10,11 +10,21 @@ public class PolicyDTO
 	private String policyDescription;
 	private String policyType;
 	private String company;
+	private String termPeriod;
 	private double amount;
-	private int tenure;
 	private double maturityAmount;
 	private double interest;
 	
+	
+	
+
+	public String getTermPeriod() {
+		return termPeriod;
+	}
+
+	public void setTermPeriod(String termPeriod) {
+		this.termPeriod = termPeriod;
+	}
 
 	public long getPolicyId() {
 		return policyId;
@@ -64,14 +74,6 @@ public class PolicyDTO
 		this.amount = amount;
 	}
 
-	public int getTenure() {
-		return tenure;
-	}
-
-	public void setTenure(int tenure) {
-		this.tenure = tenure;
-	}
-
 	public double getMaturityAmount() {
 		return maturityAmount;
 	}
@@ -89,7 +91,7 @@ public class PolicyDTO
 	}
 
 	public PolicyDTO(long policyId, String policyName, String policyDescription, String policyType, String company,
-			double amount, int tenure, double maturityAmount,double interest) {
+			double amount, double maturityAmount,double interest,String termPeriod) {
 		super();
 		this.policyId = policyId;
 		this.policyName = policyName;
@@ -97,9 +99,9 @@ public class PolicyDTO
 		this.policyType = policyType;
 		this.company = company;
 		this.amount = amount;
-		this.tenure = tenure;
 		this.maturityAmount = maturityAmount;
 		this.interest = interest;
+		this.termPeriod= termPeriod;
 	}
 
 	public PolicyDTO() {
@@ -109,10 +111,12 @@ public class PolicyDTO
 	@Override
 	public String toString() {
 		return "PolicyDTO [policyId=" + policyId + ", policyName=" + policyName + ", policyDescription="
-				+ policyDescription + ", policyType=" + policyType + ", company=" + company + ", amount=" + amount
-				+ ", tenure=" + tenure + ", maturityAmount=" + maturityAmount + ", interest=" + interest + "]";
+				+ policyDescription + ", policyType=" + policyType + ", company=" + company + ", termPeriod="
+				+ termPeriod + ", amount=" + amount + ", maturityAmount=" + maturityAmount
+				+ ", interest=" + interest + "]";
 	}
 
+	
 	
 	
 	

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from 'src/app/model/User';
 import { FormControl, Validators } from '@angular/forms';
-import { JwtClientService } from 'src/app/jwt-client.service';
+import { JwtClientService } from 'src/app/services/jwt-client.service';
 
 @Component({
   selector: 'app-register',

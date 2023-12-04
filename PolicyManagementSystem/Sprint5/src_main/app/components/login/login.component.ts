@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { JwtClientService } from 'src/app/jwt-client.service';
+import { JwtClientService } from 'src/app/services/jwt-client.service';
 import { AuthRequest } from 'src/app/model/AuthRequest';
 
 @Component({
@@ -9,10 +9,10 @@ import { AuthRequest } from 'src/app/model/AuthRequest';
 })
 export class LoginComponent {
   response:any;
-    token:any;
+  token:any;
 
-    authRequest: AuthRequest = new AuthRequest();
-    constructor(private jwtService:JwtClientService){}
+  authRequest: AuthRequest = new AuthRequest();
+  constructor(private jwtService:JwtClientService){}
 
 
   ngOnInit(): void {}
@@ -22,7 +22,27 @@ export class LoginComponent {
    {
       this.authRequest.username = formData.form.value.username;
       this.authRequest.password = formData.form.value.password;
-      this.getAccessToken(this.authRequest);
+      this.jwtService.getGeneratedToken(this.authRequest).subscribe
+      (
+        (response:any)=>
+        {
+          console.log(response);
+          this.jwtService.loginUser(response);
+          if(response.userType ==='Admin')
+          {
+            window.location.href="/admin-dashboard";
+          }
+          if((response.userType ==='User'))
+          {
+            window.location.href="/user-dashboard";
+          }
+
+        },
+        error=>
+        {
+          console.log(error);
+        }
+      )
    }
 
   public getAccessToken(authRequest:any)

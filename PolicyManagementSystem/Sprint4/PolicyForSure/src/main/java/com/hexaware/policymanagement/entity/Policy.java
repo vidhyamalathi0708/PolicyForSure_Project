@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
@@ -35,7 +36,7 @@ public class Policy implements Serializable
     @Size(max = 100, message = "Policy name cannot exceed 100 characters")
     private String policyName;
 
-    @Size(max = 255, message = "Policy description cannot exceed 255 characters")
+    @Size(max = 500, message = "Policy description cannot exceed 500 characters")
     private String policyDescription;
 
     @NotEmpty(message = "Policy type cannot be empty")
@@ -47,9 +48,10 @@ public class Policy implements Serializable
 
     @Positive(message = "Amount must be a positive number")
     private double amount;
-
-    @PositiveOrZero(message = "Tenure must be a positive number")
-    private int tenure;
+    
+    @NotEmpty
+    @Pattern(regexp = "^(Monthly|Quaterly|Half-Yearly|Annually)$")
+    private String termPeriod;
 
     @PositiveOrZero(message = "Maturity amount must be a positive or zero number")
     private double maturityAmount;
@@ -58,6 +60,12 @@ public class Policy implements Serializable
     private double interest;
 	
 	
+	public String getTermPeriod() {
+		return termPeriod;
+	}
+	public void setTermPeriod(String termPeriod) {
+		this.termPeriod = termPeriod;
+	}
 	public long getPolicyId() {
 		return policyId;
 	}
@@ -94,12 +102,6 @@ public class Policy implements Serializable
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	public int getTenure() {
-		return tenure;
-	}
-	public void setTenure(int tenure) {
-		this.tenure = tenure;
-	}
 	public double getMaturityAmount() {
 		return maturityAmount;
 	}
@@ -116,7 +118,7 @@ public class Policy implements Serializable
 	
 	
 	public Policy(long policyId, String policyName, String policyDescription, String policyType, String company,
-			 double amount, int tenure, double maturityAmount,double interest) {
+			 double amount, double maturityAmount,double interest, String termPeriod) {
 		super();
 		this.policyId = policyId;
 		this.policyName = policyName;
@@ -124,20 +126,18 @@ public class Policy implements Serializable
 		this.policyType = policyType;
 		this.company = company;
 		this.amount = amount;
-		this.tenure = tenure;
 		this.maturityAmount = maturityAmount;
 		this.interest = interest;
+		this.termPeriod= termPeriod;
 		
 	}
-	
-	
-	
 	
 	@Override
 	public String toString() {
 		return "Policy [policyId=" + policyId + ", policyName=" + policyName + ", policyDescription="
 				+ policyDescription + ", policyType=" + policyType + ", company=" + company + ", amount=" + amount
-				+ ", tenure=" + tenure + ", maturityAmount=" + maturityAmount + ", interest=" + interest + "]";
+				+ ", termPeriod=" + termPeriod + ", maturityAmount=" + maturityAmount
+				+ ", interest=" + interest + "]";
 	}
 	public Policy() {
 		super();

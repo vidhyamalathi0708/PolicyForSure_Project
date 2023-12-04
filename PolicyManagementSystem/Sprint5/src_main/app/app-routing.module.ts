@@ -7,6 +7,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { PolicyRegComponent } from './components/policy-reg/policy-reg.component';
 import { PolicySearchComponent } from './components/policy-search/policy-search.component';
 import { AdminDashComponent } from './components/admin-dash/admin-dash.component';
+import {UserDetailsComponent} from './components/user-details/user-details.component';
+import { AuthGuard } from './services/auth.guard';
+import { AdminAuthGuard } from './services/admin-auth.guard';
 const routes: Routes = [
 
   {
@@ -22,7 +25,8 @@ const routes: Routes = [
   {
     path:'user-dashboard',
     component:UserDashComponent,
-    pathMatch:'full'
+    pathMatch:'full',
+    canActivate: [AuthGuard]
   },
   {
     path:'register-user',
@@ -32,16 +36,23 @@ const routes: Routes = [
   {
     path:'register-policy',
     component:PolicyRegComponent,
-    pathMatch:'full'
+    pathMatch:'full',
+    canActivate:[AdminAuthGuard]
   },
   {
     path:'admin-dashboard',
     component:AdminDashComponent,
-    pathMatch:'full'
+    pathMatch:'full',
+    canActivate: [AdminAuthGuard]
   },
   {
     path:'policy-search',
     component:PolicySearchComponent,
+    pathMatch:'full'
+  },
+  {
+    path:'user-details',
+    component:UserDetailsComponent,
     pathMatch:'full'
   }
 

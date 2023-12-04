@@ -39,8 +39,8 @@ public class PolicyServicesImp implements IPolicyServices {
             policy.setCompany(policyDTO.getCompany());
             policy.setMaturityAmount(policyDTO.getMaturityAmount());
             policy.setPolicyDescription(policyDTO.getPolicyDescription());
-            policy.setTenure(policyDTO.getTenure());
             policy.setInterest(policyDTO.getInterest());
+            policy.setTermPeriod(policyDTO.getTermPeriod());
 
             Policy createdPolicy = policyrepo.save(policy);
 
@@ -72,8 +72,9 @@ public class PolicyServicesImp implements IPolicyServices {
             policy.setCompany(policyDTO.getCompany());
             policy.setMaturityAmount(policyDTO.getMaturityAmount());
             policy.setPolicyDescription(policyDTO.getPolicyDescription());
-            policy.setTenure(policyDTO.getTenure());
             policy.setInterest(policyDTO.getInterest());
+            policy.setTermPeriod(policyDTO.getTermPeriod());
+
 
 
             Policy updatedPolicy = policyrepo.save(policy);

@@ -3,7 +3,7 @@ export interface Policy
     policyName:string;
     policyType:any;
     company:string;
-    description:string;
+    policyDescription:string;
     termPeriod:any;
     amount:number;
     interest:number;

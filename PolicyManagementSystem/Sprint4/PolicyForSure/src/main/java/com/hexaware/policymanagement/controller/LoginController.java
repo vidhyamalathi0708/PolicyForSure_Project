@@ -1,5 +1,6 @@
 package com.hexaware.policymanagement.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hexaware.policymanagement.dto.AuthRequest;
+import com.hexaware.policymanagement.dto.LoginResponse;
+import com.hexaware.policymanagement.repository.UserRepository;
 import com.hexaware.policymanagement.services.JwtService;
 /* Author:Devanshu
  * @CreatedOn:-17-11-2023
@@ -20,6 +23,9 @@ import com.hexaware.policymanagement.services.JwtService;
 @RestController
 @RequestMapping("/api/v1/login")
 public class LoginController {
+	
+	@Autowired
+	UserRepository user;
 
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
@@ -37,12 +43,19 @@ public class LoginController {
     }
 
     @PostMapping("/user")
-    public String userLogin(@RequestBody AuthRequest authRequest) 
+    public LoginResponse userLogin(@RequestBody AuthRequest authRequest) 
     {
+    	LoginResponse response = new LoginResponse();
         authenticate(authRequest.getUsername(), authRequest.getPassword());
 
         String token = jwtService.generateToken(authRequest.getUsername());
-        return token;
+        String type = user.findUserTypeByEmail(authRequest.getUsername());
+        String userId = user.findUserIdByEmail(authRequest.getUsername());
+        response.setToken(token);
+        response.setUserId(userId);
+        response.setUserType(type);
+        
+        return response;
     }
 
     private void authenticate(String username, String password) 

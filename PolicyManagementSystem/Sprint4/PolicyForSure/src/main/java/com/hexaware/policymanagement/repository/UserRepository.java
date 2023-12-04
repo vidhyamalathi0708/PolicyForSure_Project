@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.hexaware.policymanagement.entity.User;
@@ -23,5 +26,15 @@ public interface UserRepository extends JpaRepository<User, Long>
 	public List<User> findByUserCategory(String userCategory);
 	
 	public User findByEmail(String email);
+	
+	
+	@Query("select u.userId from User u where u.email =?1")
+	public String findUserIdByEmail(String email);
+	
+	
+	@Query("select u.userType from User u where u.email =?1")
+	public String findUserTypeByEmail(String email);
+	
+	
 
 }

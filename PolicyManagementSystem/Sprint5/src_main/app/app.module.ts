@@ -20,6 +20,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { PolicySearchComponent } from './components/policy-search/policy-search.component';
 import { AdminDashComponent } from './components/admin-dash/admin-dash.component';
 import { UserDashComponent } from './components/user-dash/user-dash.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { UserDashComponent } from './components/user-dash/user-dash.component';
     PolicyRegComponent,
     PolicySearchComponent,
     AdminDashComponent,
-    UserDashComponent
+    UserDashComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

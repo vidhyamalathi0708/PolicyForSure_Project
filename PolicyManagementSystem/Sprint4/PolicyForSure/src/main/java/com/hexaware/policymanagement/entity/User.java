@@ -53,8 +53,6 @@ public class User implements Serializable
 	    private String lname;
 
 	    @NotEmpty(message = "Password cannot be empty")
-	    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]+$",
-        message = "Password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character")
 	    private String password;
 
 	    @Email(message = "Invalid email format")

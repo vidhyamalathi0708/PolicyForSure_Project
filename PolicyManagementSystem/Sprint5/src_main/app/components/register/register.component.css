@@ -13,16 +13,15 @@
     top: 13px;
     }
     
-    .gradient-custom-2 {
-        /* fallback for old browsers */
-        background: #5000bb;
-        
-        /* Chrome 10-25, Safari 5.1-6 */
-        background: -webkit-linear-gradient(to right, #5000bb, #8e00cc);
-        
-        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        background: linear-gradient(to right, #5000bb, #8e00cc)
-        }
+    .gradient-custom-2 
+    {
+    background-image: url(../../../assets/logoblur.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height:90%;
+
+    }
     
     .bg-white {
     background-color: #ffffff;
