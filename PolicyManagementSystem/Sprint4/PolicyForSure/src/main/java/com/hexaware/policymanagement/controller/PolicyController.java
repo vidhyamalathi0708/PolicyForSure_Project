@@ -36,7 +36,6 @@ public class PolicyController
 	IPolicyServices service;
 	
 	@PostMapping(value = "/add",consumes = "application/json",produces = "application/json")
-	@PreAuthorize("hasAuthority('Admin')")
 	public Policy addPolicy(@RequestBody PolicyDTO policyDTO)
 	{
 		
@@ -70,9 +69,6 @@ public class PolicyController
 	
 	
 	@GetMapping(value = "/getall",produces = "application/json")
-	@PreAuthorize("hasAnyAuthority('Admin','User')")
-
-	
 	public List<Policy> getAllPolicy()
 	{
 		return service.getAllPolicy();
@@ -80,8 +76,6 @@ public class PolicyController
 	}
 	
 	@GetMapping(value = "/get/policy-type/{policyType}",produces = "application/json")
-	@PreAuthorize("hasAnyAuthority('Admin','User')")
-
 	public List<Policy> getPolicyByPolicyType(@PathVariable String policyType)
 	{
 		return service.getPolicyByPolicyType(policyType);

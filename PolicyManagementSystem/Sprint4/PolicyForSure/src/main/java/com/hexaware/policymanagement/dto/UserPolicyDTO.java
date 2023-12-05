@@ -21,9 +21,8 @@ public class UserPolicyDTO
 	private String policyType;
 	private String company;
 	private LocalDate endDate;
-	private String paymentInterval;
+	private String termPeriod;
 	private double amount;
-	private int tenure;
 	private double maturityAmount;
 	private double interest;
 	
@@ -83,23 +82,17 @@ public class UserPolicyDTO
 	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
-	public String getPaymentInterval() {
-		return paymentInterval;
+	public String getTermPeriod() {
+		return termPeriod;
 	}
-	public void setPaymentInterval(String paymentInterval) {
-		this.paymentInterval = paymentInterval;
+	public void setTermPeriod(String termPeriod) {
+		this.termPeriod = termPeriod;
 	}
 	public double getAmount() {
 		return amount;
 	}
 	public void setAmount(double amount) {
 		this.amount = amount;
-	}
-	public int getTenure() {
-		return tenure;
-	}
-	public void setTenure(int tenure) {
-		this.tenure = tenure;
 	}
 	public double getMaturityamount() {
 		return maturityAmount;
@@ -116,7 +109,7 @@ public class UserPolicyDTO
 	}
 	public UserPolicyDTO(long policyNo, LocalDate startDate, User user, Policy policy, PolicyPayment policyPayment,
 			 String policyName, String policyType, String company, LocalDate endDate,
-			String paymentInterval, double amount, int tenure, double maturityAmount, double interest) {
+			String termPeriod, double amount, double maturityAmount, double interest) {
 		super();
 		this.policyNo = policyNo;
 		this.startDate = startDate;
@@ -127,9 +120,8 @@ public class UserPolicyDTO
 		this.policyType = policyType;
 		this.company = company;
 		this.endDate = endDate;
-		this.paymentInterval = paymentInterval;
+		this.termPeriod = termPeriod;
 		this.amount = amount;
-		this.tenure = tenure;
 		this.maturityAmount = maturityAmount;
 		this.interest = interest;
 	}
@@ -142,8 +134,8 @@ public class UserPolicyDTO
 	public String toString() {
 		return "UserPolicyDTO [policyNo=" + policyNo + ", startDate=" + startDate + ", user=" + user + ", policy="
 				+ policy + ", policyPayment=" + policyPayment + ", policyName=" + policyName + ", policyType="
-				+ policyType + ", company=" + company + ", endDate=" + endDate + ", paymentInterval=" + paymentInterval
-				+ ", amount=" + amount + ", tenure=" + tenure + ", maturityAmount=" + maturityAmount + ", interest="
+				+ policyType + ", company=" + company + ", endDate=" + endDate + ", termPeriod=" + termPeriod
+				+ ", amount=" + amount + ", maturityAmount=" + maturityAmount + ", interest="
 				+ interest + "]";
 	}
 	

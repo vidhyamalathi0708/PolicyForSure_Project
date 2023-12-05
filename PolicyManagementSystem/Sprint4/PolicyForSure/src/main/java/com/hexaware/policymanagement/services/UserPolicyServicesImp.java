@@ -47,8 +47,7 @@ public class UserPolicyServicesImp implements IUserPolicyServices {
             userpolicy.setEndDate(userpolicyDTO.getEndDate());
             userpolicy.setAmount(userpolicyDTO.getAmount());
             userpolicy.setMaturityamount(userpolicyDTO.getMaturityamount());
-            userpolicy.setPaymentInterval(userpolicyDTO.getPaymentInterval());
-            userpolicy.setTenure(userpolicyDTO.getTenure());
+            userpolicy.setTermPeriod(userpolicyDTO.getTermPeriod());
             userpolicy.setUser(userpolicyDTO.getUser());
             userpolicy.setInterest(userpolicyDTO.getInterest());
  
@@ -81,8 +80,7 @@ public class UserPolicyServicesImp implements IUserPolicyServices {
             userpolicy.setEndDate(userpolicyDTO.getEndDate());
             userpolicy.setAmount(userpolicyDTO.getAmount());
             userpolicy.setMaturityamount(userpolicyDTO.getMaturityamount());
-            userpolicy.setPaymentInterval(userpolicyDTO.getPaymentInterval());
-            userpolicy.setTenure(userpolicyDTO.getTenure());
+            userpolicy.setTermPeriod(userpolicyDTO.getTermPeriod());
             userpolicy.setPolicy(userpolicyDTO.getPolicy());
             userpolicy.setUser(userpolicyDTO.getUser());
             

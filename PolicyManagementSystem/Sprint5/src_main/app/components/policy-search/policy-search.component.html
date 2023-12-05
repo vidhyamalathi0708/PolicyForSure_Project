@@ -1,0 +1,46 @@
+<section class = "search-bg">
+<div class = "search-table">
+<table class = "table table-borderes">
+    <thead class = "thead">
+        <tr>
+            <th>Policy Id</th>
+            <th>Policy Name</th>
+            <th>Type</th>
+            <th>Company</th>
+            <th>Term Period</th>
+            <th>Term Amount</th>
+            <th>Interest</th>
+            <th>Maturity Amount</th>
+            <th>Description</th>
+            <th>Buy Now</th>
+            <th *ngIf="isAdminLoggedIn()">Edit</th>
+            <th *ngIf="isAdminLoggedIn()">Delete</th>
+
+
+        </tr>
+    </thead>
+    <tbody class = "tbody">
+        <tr *ngFor="let policy of policyDetails">
+            <td>{{policy.policyId}}</td>
+            <td>{{policy.policyName}}</td>
+            <td>{{policy.policyType}}</td>
+            <td>{{policy.company}}</td>
+            <td>{{policy.termPeriod}}</td>
+            <td>{{policy.amount}}</td>
+            <td>{{policy.interest}}</td>
+            <td>{{policy.maturityAmount}}</td>
+            <td>{{policy.policyDescription}}</td>
+            <td><button class="btn button">Buy Now</button></td>
+            <td *ngIf="isAdminLoggedIn()"><button class="btn btn-primary">Edit</button></td>
+            <td *ngIf="isAdminLoggedIn()"><button class="btn btn-danger">Delete</button></td>
+
+        </tr>
+    </tbody>
+
+
+
+</table>
+
+
+</div>
+</section>
