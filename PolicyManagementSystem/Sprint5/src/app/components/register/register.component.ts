@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from 'src/app/model/User';
 import { FormControl, Validators } from '@angular/forms';
-import { JwtClientService } from 'src/app/services/jwt-client.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -16,12 +16,11 @@ export class RegisterComponent
 
   response:any;
 
-
-
   user: User = { 
     fname: '', 
     lname: '', 
-    address:{
+    address:
+    {
       addressLine: '',
       city: '',
       state: '',
@@ -39,7 +38,7 @@ export class RegisterComponent
   }
 
 
-  constructor(private jwtService:JwtClientService){}
+  constructor(private userService:UserService){}
 
 
   readRegFormData(RegFormData:any)
@@ -62,7 +61,18 @@ export class RegisterComponent
       console.log(this.user);
 
       
-      let response = this.jwtService.registerUser(this.user);
+      let response = this.userService.registerUser(this.user);
       response.subscribe( responseData => {this.response = responseData; console.log(responseData) });
+     }
+
+     isAdminLoggedIn()
+     {
+      if(localStorage.getItem('userType')==='Admin')
+      {
+        return true;
+      }
+      else{
+        return false;
+      }
      }
     }

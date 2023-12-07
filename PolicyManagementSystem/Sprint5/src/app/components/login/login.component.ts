@@ -48,13 +48,7 @@ export class LoginComponent {
   public getAccessToken(authRequest:any)
   {
     let response =  this.jwtService.getGeneratedToken(authRequest);
-    response.subscribe( (genToken)=> {  this.token = genToken ;console.log(genToken);  this.accessApi(this.token) });
-  }
-
-  public accessApi(token:any)
-  {
-    let response = this.jwtService.authorizationTest(token);
-    response.subscribe( responseData => {this.response = responseData; console.log(responseData) });
+    response.subscribe( (genToken)=> {  this.token = genToken ;console.log(genToken)});
   }
 
 

@@ -36,6 +36,7 @@ public class PolicyController
 	IPolicyServices service;
 	
 	@PostMapping(value = "/add",consumes = "application/json",produces = "application/json")
+//	@PreAuthorize("hasAuthority('Admin')")
 	public Policy addPolicy(@RequestBody PolicyDTO policyDTO)
 	{
 		
@@ -44,15 +45,15 @@ public class PolicyController
 	
 	
 	@PutMapping(value = "/update",consumes = "application/json",produces = "application/json")
-	@PreAuthorize("hasAuthority('Admin')")
+//	@PreAuthorize("hasAuthority('Admin')")
 	public Policy updatePolicy(@RequestBody PolicyDTO policyDTO)
 	{
 		return service.updatePolicy(policyDTO);
 	}
 	
 	
-	@DeleteMapping(value = "/delete/{policyId}",consumes = "application/json")
-	@PreAuthorize("hasAuthority('Admin')")
+	@DeleteMapping(value = "/delete/{policyId}")
+//	@PreAuthorize("hasAuthority('Admin')")
 
 	public void deletePolicyById(@PathVariable Long policyId)
 	{
@@ -60,7 +61,7 @@ public class PolicyController
 	}
 	
 	@GetMapping(value = "/get/company/{company}",produces = "application/json")
-	@PreAuthorize("hasAnyAuthority('Admin','User')")
+//	@PreAuthorize("hasAnyAuthority('Admin','User')")
 
 	public List<Policy> getPolicyByCompany(@PathVariable String company)
 	{
@@ -83,7 +84,7 @@ public class PolicyController
 	
 	
 	@GetMapping("/get/amountgt/{amount}")
-	@PreAuthorize("hasAnyAuthority('Admin','User')")
+//	@PreAuthorize("hasAnyAuthority('Admin','User')")
 
 	public List<Policy> getByAmountGreaterThan(@PathVariable long amount)
 	{
@@ -92,7 +93,7 @@ public class PolicyController
 	}
 	
 	@GetMapping("/get/amountlt/{amount}")
-	@PreAuthorize("hasAnyAuthority('Admin','User')")
+//	@PreAuthorize("hasAnyAuthority('Admin','User')")
 
 	public List<Policy> getByAmountLessThan(@PathVariable long amount)
 	{

@@ -15,6 +15,7 @@ export class PolicyRegComponent {
 
   policy:Policy =
   {
+    policyId:0,
     policyName:'',
     policyType:'',
     company:'',

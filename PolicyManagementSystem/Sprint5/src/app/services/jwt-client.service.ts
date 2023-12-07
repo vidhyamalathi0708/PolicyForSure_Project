@@ -69,36 +69,5 @@ export class JwtClientService {
     {
       return localStorage.getItem('token');
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     
-
-    authorizationTest(token:any)
-    {
-      let tokenString = "Bearer "+token;
-      const headers =  new HttpHeaders().set("Authorization",tokenString);
-      return this.http.get(this.baseURL+"policies/getall",{headers,responseType:'text' as 'json'});
-    }
-
-    registerUser(requestBody:any)
-    {
-      return this.http.post(this.baseURL+"users/add",requestBody,{responseType: 'text' as 'json'})
-    }
 }

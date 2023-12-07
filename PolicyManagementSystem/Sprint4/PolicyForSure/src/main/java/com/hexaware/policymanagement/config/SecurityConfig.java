@@ -45,14 +45,14 @@ public class SecurityConfig
                 .authorizeHttpRequests()
                 .antMatchers(
                 		"/api/v1/login/user",
+                		"/api/v1/**",
                 		"/api/v1/users/add",
                 		"/api/v1/policies/getall",
                 		"/api/v1/policies/add",
                 		"/api/v1/policies/get/policy-type/{policyType}",
                         "/swagger-ui/**",
                         "/swagger-resources/**").permitAll()
-                .and()
-                .authorizeHttpRequests().antMatchers("/api/v1/**")
+                .anyRequest()
                 .authenticated().and()
                 .sessionManagement(management -> management
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))

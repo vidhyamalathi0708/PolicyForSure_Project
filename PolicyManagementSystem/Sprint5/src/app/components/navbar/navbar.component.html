@@ -13,7 +13,7 @@
     <button *ngIf="!loggedIn" style="background: #ae34ff; margin-right:50px; color: rgb(255, 255, 255);" class="btn btn-outline-body px-15" routerLink="/login" >Login</button>
     <button *ngIf="UserloggedIn" style="background: #ae34ff; margin-right:50px; color: rgb(255, 255, 255);" class="btn btn-outline-body px-15" routerLink="/user-dashboard" >Dashboard</button>
     <button *ngIf="AdminloggedIn" style="background: #ae34ff; margin-right:50px; color: rgb(255, 255, 255);" class="btn btn-outline-body px-15" routerLink="/admin-dashboard" >Dashboard</button>
-    <button *ngIf="loggedIn" style="background: #ae34ff; margin-right:50px; color: rgb(255, 255, 255);" class="btn btn-outline-body px-15" routerLink="/policy-search" >Search Policies</button>
+    <button *ngIf="!AdminloggedIn" style="background: #ae34ff; margin-right:50px; color: rgb(255, 255, 255);" class="btn btn-outline-body px-15" routerLink="/policy-search" >Search Policies</button>
     <button *ngIf="loggedIn" style="background: #ae34ff; margin-right:50px; color: rgb(255, 255, 255);" class="btn btn-outline-body px-15" routerLink="/user-details" >User Details</button>
     <button (click)="logoutUser()" *ngIf="loggedIn" style="background: #ae34ff; margin-right:50px; color: rgb(255, 255, 255);" class="btn btn-outline-body px-15">Logout</button>
     <button *ngIf="!loggedIn" style="background: #ae34ff; margin-right:75px; color: rgb(255, 255, 255);" class="btn btn-outline-body px-15" routerLink="/register-user" >Register</button>
