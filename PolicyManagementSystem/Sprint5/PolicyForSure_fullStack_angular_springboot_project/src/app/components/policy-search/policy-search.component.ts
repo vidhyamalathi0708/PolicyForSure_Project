@@ -10,8 +10,26 @@ import { PolicyServicesService } from 'src/app/services/policy-services.service'
 })
 export class PolicySearchComponent implements OnInit
 {
+  response:any;
   policyDetails:any;
   constructor(private policyService:PolicyServicesService){}
+  policy:Policy =
+  { 
+    policyId:0,
+    policyName:'',
+    policyType:'',
+    company:'',
+    policyDescription:'',
+    termPeriod:'',
+    amount:0,
+    interest:0
+
+  }
+  policyTypeControl = new FormControl('',Validators.required);
+  termPeriodControl = new FormControl('',Validators.required);
+
+
+
   ngOnInit(): void 
   {
     this.policyService.getAllPolicies().subscribe
@@ -29,56 +47,51 @@ export class PolicySearchComponent implements OnInit
 
   }
   isAdminLoggedIn()
+  {
+    let token=localStorage.getItem('token');
+    if(token==undefined || token==='' || token==null)
     {
-      let token=localStorage.getItem('token');
-      if(token==undefined || token==='' || token==null)
-      {
-        return false;
-      }
-      else if(localStorage.getItem('userType')==='Admin')
-      {
-        return true;
-      }
-      else
-      {
-        return false;
-      }
+      return false;
     }
-    deletePolicy(policyId:any)
+    else if(localStorage.getItem('userType')==='Admin')
     {
-      this.policyService.deletePolicy(policyId).subscribe
-      (
-        (response)=>
-      {
-        console.log(response);
-      },
-      (error)=>
-      {
-        console.log(error);
-      }
-      )
+      return true;
     }
-
-
-  response:any;
-
-  policy:Policy =
-  { 
-    policyId:0,
-    policyName:'',
-    policyType:'',
-    company:'',
-    policyDescription:'',
-    termPeriod:'',
-    amount:0,
-    interest:0
-
+    else
+    {
+      return false;
+    }
   }
-
-
-  policyTypeControl = new FormControl('',Validators.required);
-  termPeriodControl = new FormControl('',Validators.required);
-
+  isUserLoggedIn()
+  {
+    let token=localStorage.getItem('token');
+    if(token==undefined || token==='' || token==null)
+    {
+      return false;
+    }
+    else if(localStorage.getItem('userType')==='User')
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+  deletePolicy(policyId:any)
+  {
+    this.policyService.deletePolicy(policyId).subscribe
+    (
+      (response)=>
+    {
+      console.log(response);
+    },
+    (error)=>
+    {
+      console.log(error);
+    }
+    )
+  }
 
   readPolicyRegFormData(formData:any){
     this.policy.policyName = formData.form.value.policyName;
@@ -116,6 +129,38 @@ export class PolicySearchComponent implements OnInit
     response.subscribe( responseData => {this.response = responseData; console.log(responseData) });
     window.location.reload();
 
+  }
+  getPoliciesByType(policyType:any)
+  {
+    if(policyType.target.value==='Get All')
+    {
+      this.policyService.getAllPolicies().subscribe
+    (
+      (response)=>
+      {
+        console.log(response);
+        this.policyDetails=response;
+      },
+      (error)=>
+      {
+        console.log(error);
+      }
+    )
+
+    }
+
+    this.policyService.getPoliciesByType(policyType.target.value).subscribe
+    (
+      (response)=>
+      {
+        console.log(response);
+        this.policyDetails=response;
+      },
+      (error)=>
+      {
+        console.log(error);
+      }
+    )
   }
 
 }

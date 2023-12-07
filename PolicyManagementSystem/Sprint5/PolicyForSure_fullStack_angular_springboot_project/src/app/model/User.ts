@@ -2,6 +2,7 @@ import { Address } from './Address';
 
 export interface User
 {
+    userId:any;
     fname:string;
     lname:string;
     password:string;

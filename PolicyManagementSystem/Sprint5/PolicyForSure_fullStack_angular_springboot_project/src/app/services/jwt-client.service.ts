@@ -22,6 +22,7 @@ export class JwtClientService {
       localStorage.setItem("token",response.token);
       localStorage.setItem("userType",response.userType);
       localStorage.setItem("userId",response.userId);
+      localStorage.setItem("userName",response.userName);
       return true;
     }
 
@@ -30,6 +31,8 @@ export class JwtClientService {
       localStorage.removeItem('token');
       localStorage.removeItem("userType");
       localStorage.removeItem("userId");
+      localStorage.removeItem("userName");
+
       return true;
     }
 

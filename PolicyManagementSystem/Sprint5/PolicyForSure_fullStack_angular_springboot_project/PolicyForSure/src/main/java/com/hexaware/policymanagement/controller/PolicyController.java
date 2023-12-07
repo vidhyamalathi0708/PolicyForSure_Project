@@ -76,7 +76,7 @@ public class PolicyController
 		
 	}
 	
-	@GetMapping(value = "/get/policy-type/{policyType}",produces = "application/json")
+	@GetMapping(value = "/get/policy-type/{policyType}")
 	public List<Policy> getPolicyByPolicyType(@PathVariable String policyType)
 	{
 		return service.getPolicyByPolicyType(policyType);

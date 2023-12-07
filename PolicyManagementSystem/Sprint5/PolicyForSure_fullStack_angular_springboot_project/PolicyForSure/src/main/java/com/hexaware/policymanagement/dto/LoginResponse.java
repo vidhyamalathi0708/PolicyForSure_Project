@@ -6,6 +6,16 @@ public class LoginResponse
 	public String userId;
 	public String userType;
 	public String token;
+	public String userName;
+	
+	
+	
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 	public String getUserId() {
 		return userId;
 	}
@@ -24,15 +34,15 @@ public class LoginResponse
 	public void setToken(String token) {
 		this.token = token;
 	}
-	public LoginResponse(String userId, String userType, String token) {
+	public LoginResponse(String userId, String userType, String token, String userName) {
 		super();
 		this.userId = userId;
 		this.userType = userType;
 		this.token = token;
+		this.userName= userName;
 	}
 	public LoginResponse() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public String toString() {

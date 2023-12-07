@@ -35,7 +35,7 @@ public class UserPolicyController
 	IUserPolicyServices service;
 	
 	@PostMapping(value = "/add",consumes = "application/json",produces = "application/json")
-	@PreAuthorize("hasAuthority('User')")
+	//@PreAuthorize("hasAuthority('User')")
 
 	public UserPolicy createUserPolicy(@RequestBody UserPolicyDTO userPolicyDTO)
 	{
@@ -44,7 +44,7 @@ public class UserPolicyController
 	
 	
 	@PutMapping(value = "/update",consumes = "application/json",produces = "application/json")
-	@PreAuthorize("hasAuthority('User')")
+	//@PreAuthorize("hasAuthority('User')")
 
 	public UserPolicy updateUserPolicy(@RequestBody UserPolicyDTO userPolicyDTO)
 	{
@@ -52,8 +52,8 @@ public class UserPolicyController
 	}
 	
 	
-	@DeleteMapping(value = "/delete/{policyNo}",consumes = "application/json")
-	@PreAuthorize("hasAuthority('Admin')")
+	@DeleteMapping(value = "/delete/{policyNo}")
+	//@PreAuthorize("hasAuthority('Admin')")
 
 	public void deleteUserPolicyByPolicyNo(@PathVariable long policyNo)
 	{
@@ -62,7 +62,7 @@ public class UserPolicyController
 	
 	
 	@GetMapping(value = "/getall",produces = "application/json")
-	@PreAuthorize("hasAuthority('Admin')")
+	//@PreAuthorize("hasAuthority('Admin')")
 
 	public List<UserPolicy> getAllUserPolicy()
 	{
@@ -72,7 +72,7 @@ public class UserPolicyController
 	
 	
 	@GetMapping(value = "/get/{policyNo}",produces = "application/json")
-	@PreAuthorize("hasAnyAuthority('Admin')")
+	//@PreAuthorize("hasAnyAuthority('Admin')")
 	public UserPolicy getUserPolicyByPolicyNo(@PathVariable long policyNo)
 	{
 		return service.getUserPolicyByPolicyNo(policyNo);
@@ -80,7 +80,7 @@ public class UserPolicyController
 	}
 	
 	@GetMapping(value = "/get/userId/{userId}",produces = "application/json")
-	@PreAuthorize("hasAuthority('Admin')")
+	//@PreAuthorize("hasAuthority('Admin')")
 
 	public List<UserPolicy> getUserPolicyByUserId(@PathVariable User userId)
 	{

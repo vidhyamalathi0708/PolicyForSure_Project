@@ -1,6 +1,7 @@
 package com.hexaware.policymanagement.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -104,7 +105,6 @@ public class UserServicesImp implements IUserServices {
 			user.setUserCategory(userDTO.getUserCategory());
 			user.setUserType(userDTO.getUserType());
 			user.setDob(userDTO.getDob());
-			user.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
 			if (userDTO.getAddress() != null) 
 			{
 	            addressRepo.save(userDTO.getAddress());
@@ -265,5 +265,11 @@ public class UserServicesImp implements IUserServices {
 			logger.error("Error getting users by user category", e);
 			throw new RuntimeException("Error getting users by user category", e);
 		}
+	}
+
+	@Override
+	public Optional<User> getById(long userId) {
+		
+		return userRepo.findById(userId);
 	}
 }

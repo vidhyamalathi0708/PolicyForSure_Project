@@ -1,6 +1,7 @@
 package com.hexaware.policymanagement.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -49,7 +50,7 @@ public class UserController
 	
 	
 	@PutMapping(value = "/update")
-    @PreAuthorize("hasAnyAuthority('Admin','User')")
+    //@PreAuthorize("hasAnyAuthority('Admin','User')")
 	public User updateUser(@RequestBody UserDTO userDTO)
 	{
 		return service.updateUser(userDTO);
@@ -57,7 +58,7 @@ public class UserController
 	
 	
 	@DeleteMapping(value = "/delete/{userId}")
-	@PreAuthorize("hasAuthority('Admin')")
+	//@PreAuthorize("hasAuthority('Admin')")
 	public void deleteByUserId(@PathVariable long userId)
 	{
 		service.deleteByUserId(userId);
@@ -65,7 +66,7 @@ public class UserController
 	
 	
 	@GetMapping(value = "/getall",produces = "application/json")
-	@PreAuthorize("hasAuthority('Admin')")
+	//@PreAuthorize("hasAuthority('Admin')")
 	public List<User> getAllUser()
 	{
 		return service.getAllUser();
@@ -74,15 +75,23 @@ public class UserController
 	
 	
 	@GetMapping(value = "/get/mobile/{mobNo}")
-	@PreAuthorize("hasAuthority('Admin')")
+	//@PreAuthorize("hasAuthority('Admin')")
 	public User getUserByMobNo(@PathVariable String mobNo)
 	{
 		return service.getUserByMobNo(mobNo);
 		
 	}
 	
+	@GetMapping(value = "/get/id/{userId}")
+	//@PreAuthorize("hasAuthority('Admin')")
+	public Optional<User> getUserById(@PathVariable long userId)
+	{
+		return service.getById(userId);
+		
+	}
+	
 	@GetMapping(value = "/get/email/{email}")
-	@PreAuthorize("hasAuthority('Admin')")
+	//@PreAuthorize("hasAuthority('Admin')")
 	public UserDTO getUserPolicyByEmail(@PathVariable String email)
 	{
 		return service.getUserByEmail(email);
@@ -90,7 +99,7 @@ public class UserController
 	}
 	
 	@GetMapping(value = "/get/type/{userType}")
-	@PreAuthorize("hasAuthority('Admin')")
+	//@PreAuthorize("hasAuthority('Admin')")
 	public List<User> getUserByUserType(@PathVariable String userType)
 	{
 		return service.getUserByUserType(userType);
@@ -98,7 +107,7 @@ public class UserController
 	}
 	
 	@GetMapping(value = "/get/category/{userCategory}")
-	@PreAuthorize("hasAuthority('Admin')")
+	//@PreAuthorize("hasAuthority('Admin')")
 	public List<User> getUserByUserCategory(@PathVariable String userCategory)
 	{
 		return service.getUserByUserCategory(userCategory);

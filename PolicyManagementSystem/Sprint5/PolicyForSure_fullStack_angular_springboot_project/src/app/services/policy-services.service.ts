@@ -16,6 +16,11 @@ export class PolicyServicesService
     return this.http.get(this.baseURL+"policies/getall",{responseType:'json'});
   }
 
+  getPoliciesByType(policyType:any)
+  {
+    return this.http.get(this.baseURL+"policies/get/policy-type/"+policyType,{responseType:'json'});
+  }
+
   deletePolicy(policyId:any): Observable<void> 
   {
     let tokenString = "Bearer "+localStorage.getItem("token");

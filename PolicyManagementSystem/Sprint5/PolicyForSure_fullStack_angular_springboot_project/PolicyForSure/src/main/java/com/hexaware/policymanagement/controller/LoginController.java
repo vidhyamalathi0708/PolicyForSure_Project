@@ -51,9 +51,13 @@ public class LoginController {
         String token = jwtService.generateToken(authRequest.getUsername());
         String type = user.findUserTypeByEmail(authRequest.getUsername());
         String userId = user.findUserIdByEmail(authRequest.getUsername());
+        String userName = user.findUserNameByEmail(authRequest.getUsername());
+
+        
         response.setToken(token);
         response.setUserId(userId);
         response.setUserType(type);
+        response.setUserName(userName);
         
         return response;
     }

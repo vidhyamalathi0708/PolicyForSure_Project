@@ -17,10 +17,12 @@ export class RegisterComponent
   response:any;
 
   user: User = { 
+    userId:0,
     fname: '', 
     lname: '', 
     address:
     {
+      addressId:'',
       addressLine: '',
       city: '',
       state: '',
