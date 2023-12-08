@@ -17,6 +17,11 @@ const routes: Routes = [
     pathMatch:'full'
   },
   {
+    path:'back-to-home',
+    component:HomepageComponent,
+    pathMatch:'full'
+  },
+  {
     path:'login',
     component:LoginComponent,
     pathMatch:'full'
@@ -49,6 +54,7 @@ const routes: Routes = [
     component:PolicySearchComponent,
     pathMatch:'full'
   }
+  
 
 ];
 

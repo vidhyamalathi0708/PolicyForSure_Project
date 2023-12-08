@@ -34,7 +34,7 @@ public class PolicyPayment implements Serializable
 	private long txnId;
     @SequenceGenerator(name = "txn_seq_generator", sequenceName = "txn_seq", allocationSize = 1,initialValue =140000)
 	
-	@NotNull(message = "Payment date cannot be null")
+	//@NotNull(message = "Payment date cannot be null")
     @PastOrPresent(message = "Payment date must be in the present or past")
     private LocalDate paymentDate;
 

@@ -99,6 +99,7 @@
                               <mat-label>User Type</mat-label>
                               <select matNativeControl [formControl]="userTypeControl" required>
                                 <option value="User">User</option>
+                                <option value="Admin">Admin</option>
                               </select>
                             </mat-form-field>
                           </div>
@@ -171,6 +172,10 @@
   
                     <button style="background: #5000bb; color: rgb(255, 255, 255);" type="submit" class="btn btn-light btn-lg"
                       data-mdb-ripple-color="dark" [disabled]="RegFormData.invalid">Register User</button>
+
+                      <button style="background: #5000bb; color: rgb(255, 255, 255);" type="submit" class="btn btn-light btn-lg"
+                      data-mdb-ripple-color="dark" routerLink="/back-to-home" >BackToHome</button>
+                       
                     
   
                   </div>

@@ -52,7 +52,7 @@ public class User implements Serializable
 	    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Last name can only contain letters and spaces")
 	    private String lname;
 
-	    @NotEmpty(message = "Password cannot be empty")
+	    //@NotEmpty(message = "Password cannot be empty")
 	    private String password;
 
 	    @Email(message = "Invalid email format")
